@@ -84,7 +84,7 @@ async function bootstrap() {
       - Use Session token para validação de sessão
     `)
     .setVersion("1.0")
-    .setContact("Marketplace Team", "<https://marketplace.com>", "dev@marketplace.com")
+    .setContact("Marketplace Team", "https://marketplace.com", "dev@marketplace.com")
     .setLicense("MIT", "https://opensource.org/locenses/MIT")
     .addBearerAuth(
       {
