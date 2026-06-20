@@ -13,7 +13,19 @@ export class AuthController {
   @Post("login")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: "User login" })
-  @ApiResponse({ status: HttpStatus.OK, description: "Login successful" })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: "Login realizado com sucesso",
+    schema: {
+      type: "object",
+      properties: {
+        user: { type: "object" },
+        accessToken: { type: "string" },
+        sessionToken: { type: "string" },
+        expiresIn: { type: "number" },
+      },
+    },
+  })
   @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: "Invalid credentials" })
   @Throttle({ short: { limit: 5, ttl: 60000 } })
   async login(@Body() loginDto: LoginDto) {

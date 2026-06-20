@@ -70,7 +70,8 @@ async function bootstrap() {
   // Configuração do swagger
   const config = new DocumentBuilder()
     .setTitle("Marketeplace API Gateway")
-    .setDescription(`
+    .setDescription(
+      `
       API Gateway para o sistema de Marketplace com microserviços.
 
       Serviços disponíveis:
@@ -82,7 +83,8 @@ async function bootstrap() {
       Autenticação:
       - Use JWT Bearer token para rotas protegidas
       - Use Session token para validação de sessão
-    `)
+    `,
+    )
     .setVersion("1.0")
     .setContact("Marketplace Team", "https://marketplace.com", "dev@marketplace.com")
     .setLicense("MIT", "https://opensource.org/locenses/MIT")
@@ -115,7 +117,15 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup("api", app, document);
+  SwaggerModule.setup("api", app, document, {
+    swaggerOptions: {},
+    customSiteTitle: "Maketplace API Gateway Documentation",
+    customfavIcon: "/favicon.ico",
+    customCss: `
+      .swagger-ui .topbar { display: none }
+      .swagger-ui .info .tittle { color: #3b82f6; }
+    `,
+  });
 
   const port = process.env.PORT || 3000;
   await app.listen(port);

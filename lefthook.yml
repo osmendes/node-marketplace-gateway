@@ -5,7 +5,7 @@ pre-commit:
   commands:
     # 1º Comando: Bloqueio de Branches protegidas chamando seu arquivo JS
     check-branch:
-      run: pnpx tsx check-branch.ts
+      run: node check-branch.js
 
     # 2º Comando: Validação super rápida do Biome nos arquivos modificados
     biome-lint:
