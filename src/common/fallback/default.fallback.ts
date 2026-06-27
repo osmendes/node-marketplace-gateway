@@ -14,7 +14,7 @@ export class DefaultFallbackService {
   createErrorFallback(serviceName: string, errorMessage: string): () => Promise<never> {
     return async (): Promise<never> => {
       this.logger.error(`Fallback error for ${serviceName}: ${errorMessage}`);
-      throw new Error(`${serviceName} service unavaiable: ${errorMessage}`);
+      throw new Error(`${serviceName} service unavailable: ${errorMessage}`);
     };
   }
 
