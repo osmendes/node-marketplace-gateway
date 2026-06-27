@@ -13,9 +13,9 @@ export class CircuitBreakerService {
 
   async executeWithCircuitBreaker<T>(
     operation: () => Promise<T>,
-    fallback?: () => Promise<T>,
-    key?: string,
+    key: string,
     options: CircuitBreakerOptions = this.defaultOptions,
+    fallback?: () => Promise<T>,
   ): Promise<T> {
     const config = { ...this.defaultOptions, ...options };
     const circuit = this.getOrCreateCircuit(key, config);
